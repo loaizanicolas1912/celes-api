@@ -7,11 +7,15 @@ jobs:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: lesson-087
+      IMAGE_NAME: fast-api-model
       PROJECT_ID: celesmodel
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: Build Image
+      run: |-
+        docker build -t $IMAGE_NAME:latest .
 
     - name: Auth
       uses: google-github-actions/auth@v2
